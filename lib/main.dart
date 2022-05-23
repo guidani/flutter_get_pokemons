@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final Map<String, String> categories = const {
+  Map<String, String> categories = {
     'normal': 'Normal',
     'fighting': 'Lutador',
     'flying': 'Voador',
@@ -133,9 +133,9 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
         items: categories
-            .map.v(
-              (v) => DropdownMenuItem<String>(
-                onTap: () => getPokemons(item),
+            .map(
+              (item) => DropdownMenuItem<String>(
+                onTap: () => getPokemons(item.key),
                 value: item,
                 child: Text(
                   item,
