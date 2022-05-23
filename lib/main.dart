@@ -30,28 +30,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Map<String, String> categories = {
-    'normal': 'Normal',
-    'fighting': 'Lutador',
-    'flying': 'Voador',
-    'poison': 'Venenoso',
-    'ground': 'Solo',
-    'rock': 'Rocha',
-    'bug': 'Inseto',
-    'ghost': 'Fantasma',
-    'steel': 'Aço',
-    'fire': 'Fogo',
-    'water': 'Agua',
-    'grass': 'Grama',
-    'electric': 'Elétrico',
-    'psychic': 'Físico',
-    'ice': 'Gelo',
-    'dragon': 'Dragão',
-    'dark': 'Trevas',
-    'fairy': 'Fada',
-    'unknown': 'Desconhecido',
-    'shadow': 'Sombra'
-  };
+  List<String> items = [
+    'normal',
+    'fighting',
+    'flying',
+    'poison',
+    'ground',
+    'rock',
+    'bug',
+    'ghost',
+    'steel',
+    'fire',
+    'water',
+    'grass',
+    'electric',
+    'psychic',
+    'ice',
+    'dragon',
+    'dark',
+    'fairy',
+    'unknown',
+    'shadow'
+  ];
   String? selectedItem = null;
   List<Pokemon> pokemons = [];
 
@@ -132,10 +132,10 @@ class _MyHomePageState extends State<MyHomePage> {
             selectedItem = item;
           });
         },
-        items: categories
+        items: items
             .map(
               (item) => DropdownMenuItem<String>(
-                onTap: () => getPokemons(item.key),
+                onTap: () => getPokemons(item),
                 value: item,
                 child: Text(
                   item,
@@ -157,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
             elevation: 5,
             child: ListTile(
               leading: Image.network(
-                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOfPokemon}.png'),
+              'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOfPokemon}.png'),
               title: Text(
                 currentPokemon.name,
                 style: const TextStyle(
