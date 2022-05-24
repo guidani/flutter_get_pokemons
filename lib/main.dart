@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ]),
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
+          padding: const EdgeInsets.fromLTRB(5.0, 30.0, 5.0, 10.0),
           child: Center(
             child: Column(
               children: [
@@ -155,15 +156,18 @@ class _MyHomePageState extends State<MyHomePage> {
               0, partialNumberPokemon.length - 1);
           return Card(
             elevation: 5,
-            child: ListTile(
-              leading: Image.network(
-              'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOfPokemon}.png'),
-              title: Text(
-                currentPokemon.name,
-                style: const TextStyle(
-                    fontSize: 20, height: -0.5, fontWeight: FontWeight.w500),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: ListTile(
+                leading: Image.network(
+                    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numberOfPokemon}.png'),
+                title: Text(
+                  currentPokemon.name,
+                  style: const TextStyle(
+                      fontSize: 20, height: -0.5, fontWeight: FontWeight.w500),
+                ),
+                subtitle: Text(currentPokemon.url),
               ),
-              subtitle: Text(currentPokemon.url),
             ),
           );
         },
